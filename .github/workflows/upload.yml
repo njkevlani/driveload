@@ -16,7 +16,7 @@ jobs:
         run: ./scripts/get_file_params.sh "${{ github.event.head_commit.message }}"
 
       - name: Uninstall man-db
-        run: sudo apt-get remove -y --purge man-db
+        run: sudo apt-get remove -y man-db
 
       - name: Install dependencies
         run: |
