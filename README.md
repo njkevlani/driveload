@@ -1,5 +1,5 @@
 # driveload
-Upload file from internet to Google Drive
+Upload file from internet to Google Drive using GitHub Actions
 
 ## Usage
 For uploading a file to Google Drive, make a commit in this repository with following command:
