@@ -33,9 +33,7 @@ jobs:
       - name: Download file
         run: |
           mkdir driveload
-          cd driveload
-          axel -n 16 ${{ steps.file_params.outputs.file_url }} -o ${{ steps.file_params.outputs.file_name }}
-          cd ..
+          axel -n 16 ${{ steps.file_params.outputs.file_url }} -o driveload/${{ steps.file_params.outputs.file_name }}
 
       - name: Upload file to drive
         run: ./drive_linux push -no-prompt driveload/${{ steps.file_params.outputs.file_name }}
