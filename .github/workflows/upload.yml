@@ -30,7 +30,7 @@ jobs:
         run: |
           mkdir driveload
           cd driveload
-          axel -n 16 ${{ steps.file_params.file_url }} -o ${{ steps.file_params.file_name }}
+          axel -n 16 ${{ steps.file_params.outputs.file_url }} -o ${{ steps.file_params.outputs.file_name }}
           cd ..
 
       - name: Upload file to drive
