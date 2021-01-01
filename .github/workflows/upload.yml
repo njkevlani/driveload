@@ -1,0 +1,36 @@
+name: Upload
+
+on: push
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  upload:
+    name: Upload job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get file url
+        id: file_params
+        continue-on-error: false
+        run: ./get_file_params.sh "${{ github.event.head_commit.message }}"
+
+      - name: Install dependencies
+        run: |
+          apt update
+          apt install axel
+          axel -n 16 https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_linux
+
+      - name: Setup drive credentials
+        run: |
+          mkdir .gd
+          echo ${{ secrets.DRIVE_CREDS }} > .gd/credentials.json
+
+      - name: Download file
+        run: |
+          mkdir driveload
+          cd driveload
+          axel -n 16 ${{ file_params.file_url }} -o ${{ file_params.file_name }}
+          cd ..
+
+      - name: Upload file to drive
+        run: ./drive_linux push -no-prompt driveload/${{ file_params.file_name }}
+
