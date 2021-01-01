@@ -35,5 +35,5 @@ jobs:
           cd ..
 
       - name: Upload file to drive
-        run: ./drive_linux push -no-prompt driveload/${{ steps.file_params.file_name }}
+        run: ./drive_linux push -no-prompt driveload/${{ steps.file_params.outputs.file_name }}
 
