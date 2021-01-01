@@ -20,6 +20,7 @@ jobs:
         run: |
           sudo apt-get install axel
           axel -n 16 https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_linux
+          chmod +x ./drive_linux
 
       - name: Setup drive credentials
         run: |
