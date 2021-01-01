@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get install axel
-          axel -n 16 https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_linux
+          axel -q -n 16 https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_linux
           chmod +x ./drive_linux
 
       - name: Setup drive credentials
@@ -32,7 +32,7 @@ jobs:
       - name: Download file
         run: |
           mkdir driveload
-          axel -n 16 ${{ steps.file_params.outputs.file_url }} -o driveload/${{ steps.file_params.outputs.file_name }}
+          axel -q -n 16 ${{ steps.file_params.outputs.file_url }} -o driveload/${{ steps.file_params.outputs.file_name }}
 
       - name: Upload file to drive
         run: ./drive_linux push -no-prompt driveload/${{ steps.file_params.outputs.file_name }}
