@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Get file url
+      - name: Get file params
         id: file_params
         continue-on-error: false
         run: ./scripts/get_file_params.sh "${{ github.event.head_commit.message }}"
