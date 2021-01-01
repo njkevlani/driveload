@@ -28,9 +28,9 @@ jobs:
         run: |
           mkdir driveload
           cd driveload
-          axel -n 16 ${{ file_params.file_url }} -o ${{ file_params.file_name }}
+          axel -n 16 ${{ steps.file_params.file_url }} -o ${{ steps.file_params.file_name }}
           cd ..
 
       - name: Upload file to drive
-        run: ./drive_linux push -no-prompt driveload/${{ file_params.file_name }}
+        run: ./drive_linux push -no-prompt driveload/${{ steps.file_params.file_name }}
 
