@@ -14,7 +14,7 @@ jobs:
       - name: Get file url
         id: file_params
         continue-on-error: false
-        run: ./get_file_params.sh "${{ github.event.head_commit.message }}"
+        run: ./scripts/get_file_params.sh "${{ github.event.head_commit.message }}"
 
       - name: Install dependencies
         run: |
